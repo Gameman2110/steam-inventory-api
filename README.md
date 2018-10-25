@@ -1,6 +1,6 @@
 # Steam inventory API
 
-```
+```js
 const InventoryApi = require('steam-inventory-api');
 const inventoryApi = Object.create(InventoryApi);
 inventoryApi.init({
@@ -14,7 +14,7 @@ inventoryApi.init({
   // Max proxy requests per specified interval (default 25)
   maxUse: 25,
   // Reset requests interval (default 1 min)
-  requestInterval: 60 * 1000,
+  requestInterval: 60 * 1000
 });
 ```
 More examples can be found in `./examples`
@@ -22,7 +22,7 @@ More examples can be found in `./examples`
 
 ### inventoryApi#get
 
-```
+```js
 inventoryApi.get({
   appid,
   contextid,
@@ -33,19 +33,19 @@ inventoryApi.get({
   tradable = true, // Defaults true
   retries = 1, // Number of retries
   retryDelay = 0, // Delay between successive retries
-  retryFn = () => true, // Called with current res. Used to decide if more items should be requested between requests (inventories larger than 'count' only) 
+  retryFn = () => true // Called with current res. Used to decide if more items should be requested between requests (inventories larger than 'count' only) 
 })
 ```
 Retrieves a user's inventory. Returns a promise, with res: `{ items: [/*array of CEconItems*/], total: [/*total items*/] }`.
 
 ### inventoryApi#size
 
-```
+```js
 inventoryApi.size({
   appid,
   contextid,
   steamid,
-  retries,
+  retries
 })
 ```
 Retrieves number of items for a specified context. Returns a promise, with int res: ${Number Of Items}. Shorthand `get`.
